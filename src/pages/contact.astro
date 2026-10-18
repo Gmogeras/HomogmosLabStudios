@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Contact — HomogmosLab Studios">
+  <section class="page-intro">
+    <div>
+      <p class="eyebrow">CONTACT / COLLABORATIONS</p>
+      <h1>
+        Good stories often begin<br />
+        with a <em>question.</em>
+      </h1>
+      <p>
+        Propuestas editoriales, proyectos documentales, talleres, colaboraciones científicas o ideas extrañas pero interesantes: este es el lugar para
+        empezar la conversación.
+      </p>
+    </div>
+  </section>
+
+  <section class="contact-layout section">
+    <div class="contact-sidecard">
+      <p class="eyebrow">WE'RE OPEN TO</p>
+      <ul>
+        <li>Editorial projects</li>
+        <li>Scientific communication</li>
+        <li>Workshops & education</li>
+        <li>Documentary development</li>
+        <li>Creative collaborations</li>
+      </ul>
+    </div>
+
+    <form id="contact-form" class="contact-form">
+      <label for="name">Your name</label>
+      <input required id="name" name="name" placeholder="Name and surname" />
+
+      <label for="email">Email</label>
+      <input required id="email" name="email" type="email" placeholder="hello@example.com" />
+
+      <label for="topic">Topic</label>
+      <select id="topic" name="topic">
+        <option>Editorial collaboration</option>
+        <option>Documentary / audiovisual</option>
+        <option>Workshop / education</option>
+        <option>Other idea</option>
+      </select>
+
+      <label for="message">Message</label>
+      <textarea required id="message" name="message" rows="6" placeholder="Tell us what you have in mind..."></textarea>
+
+      <button type="submit" class="button-solid">Prepare message ↗</button>
+      <p id="contact-result" role="status" class="fine-print"></p>
+    </form>
+  </section>
+
+  <script>
+    document.querySelector('#contact-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const out = document.querySelector('#contact-result');
+      if (out) out.textContent = 'Formulario de demostración listo. Configura tu correo real antes de activar el envío.';
+    });
+  </script>
+</Base>

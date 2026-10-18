@@ -1,0 +1,106 @@
+---
+import '../styles/global.css';
+const {
+  title = 'HomogmosLab Studios',
+  description = 'Un estudio independiente de investigación, historias científicas y producción editorial y audiovisual.',
+} = Astro.props;
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/stories', label: 'Stories' },
+  { href: '/journal', label: 'Journal' },
+  { href: '/field-notes', label: 'Field Notes' },
+  { href: '/audio', label: 'Audio' },
+  { href: '/films', label: 'Films' },
+  { href: '/studio', label: 'Studio' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#08111c" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar" id="top">
+        <a href="/" class="brand" aria-label="HomogmosLab Studios — inicio">
+          <img class="brand-logo" src="/brand-badge.png" alt="" width="48" height="48" />
+          <div class="brand-lockup">
+            <strong>HomogmosLab Studios</strong>
+            <span>Exploring life. One thought at a time.</span>
+          </div>
+        </a>
+
+        <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">Menu +</button>
+
+        <nav class="nav" aria-label="Navegación principal">
+          {nav.map((item) => (
+            <a class:list={['nav-link', { active: path === item.href || path.startsWith(item.href + '/') }]} href={item.href}>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </header>
+
+      <main>
+        <slot />
+      </main>
+
+      <footer class="footer">
+        <div class="footer-panel footer-brand-panel">
+          <img src="/brand-mark.png" alt="" class="footer-mark" width="72" height="72" />
+          <div>
+            <p class="eyebrow">INDEPENDENT SCIENCE & STORYTELLING</p>
+            <h3>HomogmosLab Studios</h3>
+            <p>Una investigación puede convertirse en ensayo, audio, documental o clase. El archivo crece historia por historia.</p>
+          </div>
+        </div>
+
+        <div class="footer-panel footer-links-panel">
+          <div>
+            <p class="eyebrow">Navigate</p>
+            <div class="footer-links">
+              <a href="/stories">Stories</a>
+              <a href="/journal">Journal</a>
+              <a href="/field-notes">Field Notes</a>
+              <a href="/audio">Audio</a>
+              <a href="/films">Films</a>
+              <a href="/studio">Studio</a>
+              <a href="/contact">Contact</a>
+            </div>
+          </div>
+          <div>
+            <p class="eyebrow">Principle</p>
+            <p class="footer-principle">One investigation. Many ways to tell the story.</p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span>© {new Date().getFullYear()} HomogmosLab Studios</span>
+          <span>Exploring life. One thought at a time.</span>
+          <a href="#top">Back to top ↑</a>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const menu = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.nav');
+      menu?.addEventListener('click', () => {
+        const active = nav?.classList.toggle('open') || false;
+        menu.setAttribute('aria-expanded', String(active));
+        menu.textContent = active ? 'Close ×' : 'Menu +';
+      });
+    </script>
+  </body>
+</html>

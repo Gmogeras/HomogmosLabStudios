@@ -1,0 +1,178 @@
+---
+import Base from '../layouts/Base.astro';
+import StoryCard from '../components/StoryCard.astro';
+import { stories } from '../data/stories';
+
+const featured = stories[0];
+const signalCards = [
+  {
+    number: '01',
+    title: 'Written word',
+    text: 'El texto maestro reúne la evidencia, la estructura narrativa y la voz principal.',
+  },
+  {
+    number: '02',
+    title: 'Sound',
+    text: 'El podcast no resume: reorganiza la experiencia a través de ritmo, silencios y escucha.',
+  },
+  {
+    number: '03',
+    title: 'Moving image',
+    text: 'El documental convierte preguntas en secuencias, atmósferas, mapas y presencia visual.',
+  },
+];
+---
+<Base title="HomogmosLab Studios — Exploring life. One thought at a time.">
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="live-dot"></span> INDEPENDENT SCIENCE & STORYTELLING / EST. 2026</p>
+      <h1>
+        Exploring life.<br />
+        <em>One thought</em><br />
+        at a time.
+      </h1>
+      <p class="hero-deck">
+        HomogmosLab Studios es un archivo narrativo en construcción: un lugar donde una sola investigación puede desplegarse como ensayo,
+        podcast, documental, editorial o clase.
+      </p>
+      <div class="hero-actions">
+        <a href="/stories" class="button-solid">Explore the archive ↗</a>
+        <a href="/studio" class="button-ghost">About the studio</a>
+      </div>
+    </div>
+
+    <div class="hero-stage" aria-hidden="true">
+      <div class="hero-gradient"></div>
+      <div class="hero-grid"></div>
+      <div class="hero-badge-wrap">
+        <img src="/brand-badge.png" alt="" class="hero-badge" width="560" height="560" />
+      </div>
+      <div class="hero-dossier hero-dossier-main">
+        <span>STORY FILE 001</span>
+        <strong>{featured.title}</strong>
+        <small>{featured.logline}</small>
+      </div>
+      <div class="hero-dossier hero-dossier-side">
+        <span>EDITORIAL SYSTEM</span>
+        <strong>One investigation</strong>
+        <small>essay → podcast → documentary → posts</small>
+      </div>
+      <div class="hero-signal">+</div>
+      <div class="hero-floor-note">The stories are the center. Formats orbit around them.</div>
+    </div>
+  </section>
+
+  <section class="manifesto-section section-split">
+    <div>
+      <p class="section-kicker">01 / MANIFESTO</p>
+    </div>
+    <div>
+      <h2>
+        We do not start with content.<br />
+        We start with a <em>question.</em>
+      </h2>
+      <p class="lede-text">
+        Una historia científica no nace de una plataforma. Nace de una investigación. El sitio existe para sostener ese proceso: reunir el archivo,
+        expandirlo a otros medios y devolver todo a un mismo lugar.
+      </p>
+      <div class="manifesto-callout">
+        <span>Principle</span>
+        <strong>One investigation. Many ways to tell the story.</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="section featured-archive">
+    <div class="section-head between">
+      <div>
+        <p class="eyebrow">THE ARCHIVE / VOLUME 001</p>
+        <h2>
+          Stories worth<br />
+          <em>building around.</em>
+        </h2>
+      </div>
+      <a href="/stories" class="text-link">See all stories ↗</a>
+    </div>
+
+    <div class="archive-layout">
+      <div class="featured-story-panel">
+        <div class:list={['feature-art', featured.art]}>
+          <div class="feature-overlay">
+            <span class="eyebrow">FEATURED STORY / FILE {featured.number}</span>
+            <h3>{featured.title}</h3>
+            <p>{featured.question}</p>
+            <a href={`/stories/${featured.slug}`} class="button-solid small">Open dossier ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="archive-stack">
+        <StoryCard story={stories[1]} />
+        <StoryCard story={stories[2]} />
+      </div>
+    </div>
+
+    <p class="caption-note">* Los títulos mostrados funcionan como historias conceptuales y demostraciones editoriales en desarrollo.</p>
+  </section>
+
+  <section class="section process-band">
+    <div class="section-head stacked">
+      <p class="eyebrow">HOW THE SYSTEM WORKS</p>
+      <h2>
+        A single research file can have<br />
+        several <em>afterlives.</em>
+      </h2>
+    </div>
+
+    <div class="signal-grid">
+      {signalCards.map((card) => (
+        <article class="signal-card">
+          <span>{card.number}</span>
+          <h3>{card.title}</h3>
+          <p>{card.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section blueprint-section">
+    <div class="blueprint-card">
+      <div>
+        <p class="eyebrow">STORY BLUEPRINT</p>
+        <h2>
+          Every story becomes<br />
+          a small universe.
+        </h2>
+      </div>
+      <div class="blueprint-steps">
+        <div>
+          <strong>Research file</strong>
+          <p>Preguntas, bibliografía, fuentes, apuntes y primeras hipótesis.</p>
+        </div>
+        <div>
+          <strong>Master text</strong>
+          <p>El escrito largo donde se ordena la evidencia y aparece la voz principal.</p>
+        </div>
+        <div>
+          <strong>Adaptations</strong>
+          <p>Podcast, documental, editorial, posts y materiales educativos derivados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section closing-panel">
+    <div>
+      <p class="eyebrow">READY TO BUILD THE ARCHIVE?</p>
+      <h2>
+        Let the questions<br />
+        become <em>work.</em>
+      </h2>
+      <p class="closing-copy">
+        Estudios documentales, series editoriales, escritura científica, asesoría o talleres: el proyecto está diseñado para crecer desde una base
+        intelectual sólida.
+      </p>
+    </div>
+    <a href="/contact" class="button-solid">Start a conversation ↗</a>
+  </section>
+</Base>

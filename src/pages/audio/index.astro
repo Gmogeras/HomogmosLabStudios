@@ -1,0 +1,34 @@
+---
+import Base from '../../layouts/Base.astro';
+import { stories } from '../../data/stories';
+---
+<Base title="Audio — HomogmosLab Studios">
+  <section class="page-intro">
+    <div>
+      <p class="eyebrow">AUDIO / NARRATIVE SCIENCE</p>
+      <h1>
+        Research that can also<br />
+        be <em>heard.</em>
+      </h1>
+      <p>
+        El audio es la versión donde la investigación respira distinto: voz, silencios, ambientes y ritmo para sostener una historia sin depender de la
+        imagen.
+      </p>
+    </div>
+  </section>
+
+  <section class="section media-grid">
+    <article class="media-feature audio">
+      <div class="media-icon">◉</div>
+      <div>
+        <p class="eyebrow">PODCAST CONCEPT / FILE 001</p>
+        <h2>{stories[0].title}</h2>
+        <p>
+          Un futuro episodio sobre el rastro fósil de Gigantopithecus, construido a partir del escrito maestro y pensado como una pieza narrativa, no como
+          simple resumen.
+        </p>
+        <a href={`/stories/${stories[0].slug}`} class="button-ghost">Open story file</a>
+      </div>
+    </article>
+  </section>
+</Base>
