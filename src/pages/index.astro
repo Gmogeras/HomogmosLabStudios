@@ -1,0 +1,159 @@
+---
+import Base from '../layouts/Base.astro';
+import StoryCard from '../components/StoryCard.astro';
+import { stories } from '../data/stories';
+
+const featured = stories[0];
+const signalCards = [
+  { number: '01', title: 'Written word', text: 'Texto maestro y archivo.' },
+  { number: '02', title: 'Sound', text: 'La historia en audio.' },
+  { number: '03', title: 'Moving image', text: 'La historia en documental.' },
+];
+---
+<Base title="HomogmosLab Studios — Exploring life. One thought at a time.">
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="live-dot"></span> INDEPENDENT SCIENCE & STORYTELLING / EST. 2026</p>
+      <h1>
+        Exploring life.<br />
+        <em>One thought</em><br />
+        at a time.
+      </h1>
+      <p class="hero-deck">
+        Un archivo narrativo donde una investigación puede volverse ensayo, podcast o documental.
+      </p>
+      <div class="hero-actions">
+        <a href="/stories" class="button-solid">Explore the archive ↗</a>
+        <a href="/studio" class="button-ghost">About the studio</a>
+      </div>
+    </div>
+
+    <div class="hero-stage" aria-hidden="true">
+      <div class="hero-gradient"></div>
+      <div class="hero-grid"></div>
+      <div class="hero-badge-wrap">
+        <img src="/brand-badge.png" alt="" class="hero-badge" width="560" height="560" />
+      </div>
+      <div class="hero-dossier hero-dossier-main">
+        <span>STORY FILE 001</span>
+        <strong>{featured.title}</strong>
+        <small>{featured.logline}</small>
+      </div>
+      <div class="hero-dossier hero-dossier-side">
+        <span>EDITORIAL SYSTEM</span>
+        <strong>One investigation</strong>
+        <small>essay → podcast → documentary → posts</small>
+      </div>
+      <div class="hero-signal">+</div>
+      <div class="hero-floor-note">Stories first.</div>
+    </div>
+  </section>
+
+  <section class="manifesto-section section-split">
+    <div>
+      <p class="section-kicker">01 / MANIFESTO</p>
+    </div>
+    <div>
+      <h2>
+        We start with a<br />
+        <em>question.</em>
+      </h2>
+      <p class="lede-text">La historia nace en la investigación y vuelve siempre al mismo archivo.</p>
+      <div class="manifesto-callout">
+        <span>Principle</span>
+        <strong>One investigation. Many ways to tell the story.</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="section featured-archive">
+    <div class="section-head between">
+      <div>
+        <p class="eyebrow">THE ARCHIVE / VOLUME 001</p>
+        <h2>
+          Stories worth<br />
+          <em>building around.</em>
+        </h2>
+      </div>
+      <a href="/stories" class="text-link">See all stories ↗</a>
+    </div>
+
+    <div class="archive-layout">
+      <div class="featured-story-panel">
+        <div class:list={['feature-art', featured.art]}>
+          <div class="feature-overlay">
+            <span class="eyebrow">FEATURED STORY / FILE {featured.number}</span>
+            <h3>{featured.title}</h3>
+            <p>{featured.question}</p>
+            <a href={`/stories/${featured.slug}`} class="button-solid small">Open dossier ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="archive-stack">
+        <StoryCard story={stories[1]} />
+        <StoryCard story={stories[2]} />
+      </div>
+    </div>
+
+    <p class="caption-note">* Títulos conceptuales en desarrollo.</p>
+  </section>
+
+  <section class="section process-band">
+    <div class="section-head stacked">
+      <p class="eyebrow">HOW THE SYSTEM WORKS</p>
+      <h2>
+        One file.<br />
+        Many <em>forms.</em>
+      </h2>
+    </div>
+
+    <div class="signal-grid">
+      {signalCards.map((card) => (
+        <article class="signal-card">
+          <span>{card.number}</span>
+          <h3>{card.title}</h3>
+          <p>{card.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section blueprint-section">
+    <div class="blueprint-card">
+      <div>
+        <p class="eyebrow">STORY BLUEPRINT</p>
+        <h2>
+          Every story becomes<br />
+          a small universe.
+        </h2>
+      </div>
+      <div class="blueprint-steps">
+        <div>
+          <strong>Research file</strong>
+          <p>Fuentes y preguntas.</p>
+        </div>
+        <div>
+          <strong>Master text</strong>
+          <p>El escrito central.</p>
+        </div>
+        <div>
+          <strong>Adaptations</strong>
+          <p>Audio, cine y posts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section closing-panel">
+    <div>
+      <p class="eyebrow">READY TO BUILD THE ARCHIVE?</p>
+      <h2>
+        Let the questions<br />
+        become <em>work.</em>
+      </h2>
+      <p class="closing-copy">Historias, talleres, escritura y proyectos audiovisuales.</p>
+    </div>
+    <a href="/contact" class="button-solid">Start a conversation ↗</a>
+  </section>
+</Base>

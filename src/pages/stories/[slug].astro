@@ -1,0 +1,111 @@
+---
+import Base from '../../layouts/Base.astro';
+import { stories, storyAssets } from '../../data/stories';
+
+export function getStaticPaths() {
+  return stories.map((story) => ({ params: { slug: story.slug }, props: { story } }));
+}
+
+const { story } = Astro.props;
+---
+<Base title={`${story.title} — HomogmosLab Studios`} description={story.teaser}>
+  <section class="story-hero">
+    <div class="story-hero-copy">
+      <a class="back-link" href="/stories">← Back to archive</a>
+      <p class="eyebrow">STORY FILE {story.number} / {story.category}</p>
+      <h1>{story.title}</h1>
+      <p class="story-deck">{story.subtitle}</p>
+      <div class="story-meta-row">
+        <span>IN DEVELOPMENT</span>
+        <span>MASTER STORY PAGE</span>
+        <span>HOMOGMOSLAB STUDIOS</span>
+      </div>
+    </div>
+
+    <div class:list={['story-stage', story.art]} aria-hidden="true">
+      <div class="story-stage-card primary">
+        <span>Central question</span>
+        <strong>{story.question}</strong>
+      </div>
+      <div class="story-stage-card secondary">
+        <span>Why it matters</span>
+        <strong>{story.whyItMatters}</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="story-core story-grid-panel">
+    <div>
+      <p class="section-kicker">THE RESEARCH FILE</p>
+      <h2>What this story asks.</h2>
+    </div>
+    <div>
+      <p class="lead-text">{story.teaser}</p>
+      <p>Esta página reúne el texto central, referencias y futuras adaptaciones.</p>
+      <div class="tag-row">
+        {story.tags.map((tag) => (
+          <span>{tag}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section excerpt-panel">
+    <div class="section-head stacked">
+      <p class="eyebrow">MASTER TEXT / PREVIEW</p>
+      <h2>
+        The written piece<br />
+        remains the <em>source.</em>
+      </h2>
+    </div>
+
+    <div class="excerpt-card">
+      <p>{story.logline} Todo vuelve aquí.</p>
+    </div>
+  </section>
+
+  <section class="section formats-matrix">
+    <div class="section-head stacked">
+      <p class="eyebrow">ADAPTATION MAP</p>
+      <h2>
+        One dossier.<br />
+        Several outputs.
+      </h2>
+    </div>
+
+    <div class="asset-grid">
+      {storyAssets.map((asset) => (
+        <article class="asset-card">
+          <div class="asset-topline">
+            <span>{asset.icon}</span>
+            <small>{asset.state}</small>
+          </div>
+          <h3>{asset.type}</h3>
+          <p>{asset.description}</p>
+          <strong>{asset.note}</strong>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section notes-ribbon">
+    <div class="notes-ribbon-card">
+      <div>
+        <p class="eyebrow">REFERENCE SYSTEM</p>
+        <h3>Everything stays attached to the same story.</h3>
+      </div>
+      <p>El archivo acumula valor en un solo lugar.</p>
+    </div>
+  </section>
+
+  <section class="section closing-panel compact">
+    <div>
+      <p class="eyebrow">KEEP EXPLORING</p>
+      <h2>
+        The next file is already<br />
+        <em>waiting.</em>
+      </h2>
+    </div>
+    <a href="/stories" class="button-solid">Explore more stories ↗</a>
+  </section>
+</Base>

@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+import StoryCard from '../../components/StoryCard.astro';
+import { stories } from '../../data/stories';
+---
+<Base title="Stories — HomogmosLab Studios">
+  <section class="page-intro page-intro-archive">
+    <div>
+      <p class="eyebrow">ARCHIVE / STORIES</p>
+      <h1>
+        An archive of<br />
+        <em>curiosity.</em>
+      </h1>
+      <p>Cada historia funciona como un archivo madre y un punto de partida.</p>
+    </div>
+    <div class="intro-sidecard">
+      <span>EDITORIAL RULE</span>
+      <strong>Stories first.</strong>
+      <p>Una pregunta, varias formas.</p>
+    </div>
+  </section>
+
+  <section class="section archive-filters">
+    <div class="tag-row wide">
+      <span>Evolution</span>
+      <span>Genomics</span>
+      <span>Extinction</span>
+      <span>Natural history</span>
+      <span>Human origins</span>
+      <span>Science stories</span>
+    </div>
+  </section>
+
+  <section class="section archive-grid-section">
+    <div class="archive-grid three-col">
+      {stories.map((story) => (
+        <StoryCard story={story} />
+      ))}
+    </div>
+  </section>
+</Base>
